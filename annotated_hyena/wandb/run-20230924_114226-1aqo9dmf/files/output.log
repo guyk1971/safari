@@ -1,0 +1,30 @@
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+No such comm: 1855618305b24d079f196a6849091701
+No such comm: db8697612ed44da5b5c5e5643941d590
+No such comm: 25ca53a3ef4642a081be006801228f97
+No such comm: 80abdb21ef014b35860f600b60e0d404
+No such comm: e7012597f81d44e0ad16016134610ea5
+No such comm: 8f2369e7608b4f759592108c44874b99
+No such comm: 22f9e06082534b7abd91f4855c2ce993
+No such comm: 4b07d673a8014c108053e016b1737d7e
+No such comm: c9b285e72ca6480f88ffd7b13b54f5aa
+No such comm: 17ac4ed4d06d4b11aa42fc8a4c196b99
+No such comm: 13a2c755aded447c83f96bdd1d9c83a4
+No such comm: ae19d693c1354db49b1c3aa6f885d2a5
+No such comm: 8317dc014bfd4bc5ae27d430c7703a66
+No such comm: c721f5cb68fb4085981b449f94967899
+No such comm: 4a11b0709de4458d90d594a90dbacc5d
+No such comm: b2423c7436634627b164354829691cd3
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/pytorch/loggers/wandb.py:398: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs

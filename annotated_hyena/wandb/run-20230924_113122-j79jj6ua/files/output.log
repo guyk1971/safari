@@ -1,0 +1,79 @@
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+No such comm: 50378ef707c44943b8cca2d5438fb008
+No such comm: 9b00d6c777b44d9e9ba3d5621c320b10
+No such comm: f62b39a81cb048c391e5bc0aa589218f
+No such comm: a76e4390fe3046e781650a8f9013afab
+No such comm: fd5843794d68412fb699007c3fb3130e
+No such comm: 082e8e47c504493fade3d506f8f94158
+No such comm: 923d7ee3db0d4d30af7364f42f43dfcb
+No such comm: 4e7dc180cf544613901403685a9d537f
+No such comm: 6da079ec200443f784755d5707d06426
+No such comm: d70e31b081204a249d04ef2413cf09b0
+No such comm: c4158c9459124dd1acf1c69b41b13e2f
+No such comm: 9d9c2592889f418da52e30cd2d5e92b7
+No such comm: 4745f43290194ec594559136fe4a2460
+No such comm: 6bce12d9b5384a92b8e18652dee0dbbb
+No such comm: 3a5edac468b342f1ab9100d5637b0ca0
+No such comm: b07e8bb861fa4a18b55b6c61bcff768c
+6.19.2
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/pytorch/loggers/wandb.py:398: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+6.19.2
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+6.19.2
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py:508: UserWarning: You passed `Trainer(accelerator='cpu', precision='16-mixed')` but AMP with fp16 is not supported on CPU. Using `precision='bf16-mixed'` instead.
+  rank_zero_warn(
+Using bfloat16 Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: False
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/pytorch/trainer/setup.py:176: PossibleUserWarning: GPU available but not used. Set `accelerator` and `devices` using `Trainer(accelerator='gpu', devices=2)`.
+  rank_zero_warn(
+  | Name    | Type       | Params
+---------------------------------------
+0 | tok_emb | Embedding  | 25.1 K
+1 | drop    | Dropout    | 0
+2 | layers  | Sequential | 4.2 M
+3 | ln      | LayerNorm  | 772
+4 | head    | Linear     | 25.1 K
+---------------------------------------
+4.3 M     Trainable params
+768       Non-trainable params
+4.3 M     Total params
+17.165    Total estimated model params size (MB)
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py:53: UserWarning: Detected KeyboardInterrupt, attempting graceful shutdown...
+  rank_zero_warn("Detected KeyboardInterrupt, attempting graceful shutdown...")

@@ -1,0 +1,875 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.13
+    cli_version: 0.15.11
+    framework: huggingface
+    huggingface_version: 4.33.2
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1695544282.195289
+    t:
+      1:
+      - 1
+      - 11
+      - 41
+      - 49
+      - 51
+      - 55
+      - 71
+      2:
+      - 1
+      - 11
+      - 41
+      - 49
+      - 51
+      - 55
+      - 71
+      3:
+      - 1
+      - 2
+      - 7
+      - 23
+      4: 3.10.13
+      5: 0.15.11
+      6: 4.33.2
+      8:
+      - 1
+      - 5
+      13: linux-x86_64
+    m:
+    - 1: trainer/global_step
+      6:
+      - 3
+    - 1: gradients/graph_5ln\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5ln\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5ln\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5ln\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5ln\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5ln\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_output\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_output\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_output\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_output\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_output\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_output\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.B._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.B.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.B.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.window\.b._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.window\.b.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.window\.b.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.window\.alphas._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.window\.alphas.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.window\.alphas.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.h._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.h.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.filter\.h.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.conv\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.conv\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.conv\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.conv\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.conv\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.conv\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.linear\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.linear\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.linear\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.linear\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.linear\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.5\.proj_input\.linear\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_output\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_output\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_output\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_output\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_output\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_output\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.B._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.B.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.B.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.window\.b._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.window\.b.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.window\.b.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.window\.alphas._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.window\.alphas.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.window\.alphas.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.h._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.h.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.filter\.h.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.conv\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.conv\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.conv\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.conv\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.conv\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.conv\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.linear\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.linear\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.linear\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.linear\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.linear\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.4\.proj_input\.linear\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_output\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_output\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_output\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_output\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_output\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_output\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.B._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.B.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.B.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.window\.b._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.window\.b.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.window\.b.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.window\.alphas._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.window\.alphas.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.window\.alphas.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.h._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.h.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.filter\.h.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.conv\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.conv\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.conv\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.conv\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.conv\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.conv\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.linear\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.linear\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.linear\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.linear\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.linear\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.3\.proj_input\.linear\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_output\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_output\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_output\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_output\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_output\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_output\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.B._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.B.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.B.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.window\.b._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.window\.b.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.window\.b.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.window\.alphas._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.window\.alphas.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.window\.alphas.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.h._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.h.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.filter\.h.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.conv\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.conv\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.conv\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.conv\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.conv\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.conv\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.linear\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.linear\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.linear\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.linear\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.linear\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.2\.proj_input\.linear\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_output\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_output\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_output\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_output\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_output\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_output\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.B._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.B.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.B.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.window\.b._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.window\.b.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.window\.b.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.window\.alphas._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.window\.alphas.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.window\.alphas.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.h._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.h.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.filter\.h.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.conv\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.conv\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.conv\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.conv\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.conv\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.conv\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.linear\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.linear\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.linear\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.linear\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.linear\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.1\.proj_input\.linear\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_output\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_output\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_output\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_output\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_output\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_output\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.B._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.B.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.B.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.window\.b._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.window\.b.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.window\.b.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.window\.alphas._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.window\.alphas.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.window\.alphas.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.h._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.h.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.filter\.h.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.conv\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.conv\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.conv\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.conv\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.conv\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.conv\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.linear\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.linear\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.linear\.weight.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.linear\.bias._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.linear\.bias.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5layers\.0\.proj_input\.linear\.bias.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5pos_emb._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5pos_emb.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5pos_emb.bins
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5tok_emb\.weight._type
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5tok_emb\.weight.values
+      5: 1
+      6:
+      - 1
+    - 1: gradients/graph_5tok_emb\.weight.bins
+      5: 1
+      6:
+      - 1
+learning_rate:
+  desc: null
+  value: 0.0006
+epochs:
+  desc: null
+  value: 40
+betas:
+  desc: null
+  value:
+  - 0.9
+  - 0.98
+weight_decay:
+  desc: null
+  value: 0.4
+device_type:
+  desc: null
+  value: cpu
+precision:
+  desc: null
+  value: '16'
+batch_size:
+  desc: null
+  value: 64
+num_workers:
+  desc: null
+  value: 4
+d_model:
+  desc: null
+  value: 386
+n_layers:
+  desc: null
+  value: 6
+vocab_size:
+  desc: null
+  value: 65
+d_embed:
+  desc: null
+  value: 33
+d_filter_mlp:
+  desc: null
+  value: 64
+n_filter_layers:
+  desc: null
+  value: 4
+context_length:
+  desc: null
+  value: 128
+short_conv_size:
+  desc: null
+  value: 3
+order:
+  desc: null
+  value: 2
+pdrop_hyena:
+  desc: null
+  value: 0.0
+pdrop_embed:
+  desc: null
+  value: 0.2
+omega:
+  desc: null
+  value: 12

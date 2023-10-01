@@ -1,0 +1,23 @@
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`
+/home/guy/anaconda3/envs/hyena/lib/python3.10/site-packages/lightning/fabric/connector.py:554: UserWarning: 16 is supported for historical reasons but its usage is discouraged. Please set your precision to 16-mixed instead!
+  rank_zero_warn(
+Using 16bit Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+No such comm: c895b6c652e94ab6be0658da3654e135
+No such comm: 35ae1e7069a4451083fb3744f203a08c
+No such comm: 98e46f244044455ab31f6fd00706a385
+No such comm: a73c87ef084c41b894b04fe6401163b4
+No such comm: b347842e2a31458b8de080990b36edcc
+No such comm: fffad831f8304892bfd117c88541cb91
+No such comm: 1ccc14dd743d4b54b952d5b23055b920
+No such comm: 743454f3c832480d9170b852441d4cab
+No such comm: d53f92d8683f4330bdbce8e604e1ee5a
+No such comm: c7a87c1cb53b48e0984f1857ba6486b4
+No such comm: ba03a87a75bd435e953627ba647d2c8e
+No such comm: dc2e5c9fabeb47c5b1e06a5caf175f76
+No such comm: 39987490622e46389ba468d14424c7e7
+No such comm: f5aece3a7b784faa80c40ce315a3ed30
+No such comm: 1f597421eb754c52abef646dbad6fb64
