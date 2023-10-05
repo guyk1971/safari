@@ -13,6 +13,9 @@ train:
 
 trainer:
   max_epochs: 400
+  accelerator: gpu
+  devices: 1
+  num_nodes: 1
 
 model:
   _name_: lm_simple
