@@ -1,14 +1,11 @@
 #!/bin/bash
-#SBATCH -A llmservice_modelalignment_sft
-#SBATCH -p luna
+#SBATCH -p a100-pcie-80gb-preprod
 #SBATCH -N 1 # number of nodes
 #SBATCH -t 4:00:00              # wall time  (8 for batch, backfill, 2 for batch_short)
-#SBATCH -J "llmservice_modelalignment_sft-langspeech:gpt_20b_old_kas"            # job name (<< CHANGE ! >>)
-#SBATCH --ntasks-per-node=8    # n tasks per machine (one task per gpu) <required>
+#SBATCH -J "hyena-safari-ar-131k-vs30"            # job name (<< CHANGE ! >>)
+#SBATCH --ntasks-per-node=1    # n tasks per machine (one task per gpu) <required>
 set -x
 
-SLURM_ACCOUNT_DIR='ent_aiapps'  # <Make sure you dont override SLURM_ACCOUNT!>
-USERID='gkoren'
 # CONTAINER="nvcr.io/ea-bignlp/ga-participants/nemofw-training:23.08.02"
 CONTAINER="gitlab-master.nvidia.com:5005/gkoren/safari-hyena"
 WANDB="xxx" # replace with your own WandB API key
