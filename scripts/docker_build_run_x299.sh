@@ -24,29 +24,25 @@ if [ -z "$(docker images -q ${IMAGE})" ]; then
     echo "  RUN apt-get -y install sudo" >> $FILE
     echo "  RUN (groupadd -g $MY_GID $MY_UNAME || true) && useradd --uid $MY_UID -g $MY_GID --no-log-init --create-home $MY_UNAME && (echo \"${MY_UNAME}:password\" | chpasswd) && (echo \"${MY_UNAME} ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers)" >> $FILE
 
-    # START: install any additional package required for your image here
-    echo "  WORKDIR /tmp/safari_build"
-    echo "  COPY ./requirements_cont.txt /tmp/safari_build/"
-    echo "  RUN pip install -r requirements_cont.txt && rm -rf /tmp/safari_build"
-    # END: install any additional package required for your image here
-
-
     echo "  RUN mkdir -p $DIR" >> $FILE
     echo "  RUN ln -s ${LINK}/.vscode-server /home/${MY_UNAME}/.vscode-server" >> $FILE
     echo "  RUN echo \"fs.inotify.max_user_watches=524288\" >> /etc/sysctl.conf" >> $FILE
     echo "  RUN sysctl -p" >> $FILE
     echo "  USER $MY_UNAME" >> $FILE
-
     
     # create convenient bashrc. do we need the first line ?
-    echo "  COPY $DIR/../env/bashrc.txt /home/${MY_UNAME}/.bashrc" >> $FILE 
-    echo "  RUN source /home/${MY_UNAME}/.bashrc" >> $FILE
+    echo "  COPY docker.bashrc /home/${MY_UNAME}/.bashrc" >> $FILE 
     
-
+   # START: install any additional package required for your image here
+    echo "  WORKDIR /tmp/safari_build" >> $FILE
+    echo "  COPY ./requirements_cont.txt /tmp/safari_build/" >> $FILE
+    echo "  RUN pip install -r requirements_cont.txt && rm -rf /tmp/safari_build" >> $FILE
+    # END: install any additional package required for your image here
+    echo "  RUN source /home/${MY_UNAME}/.bashrc" >> $FILE
     echo "  WORKDIR $DIR/.." >> $FILE
     echo "  CMD /bin/bash" >> $FILE
 
-    docker build -f dev.dockerfile -t ${IMAGE} .
+    docker buildx build -f dev.dockerfile -t ${IMAGE} .
 
 fi
 
@@ -63,11 +59,11 @@ docker run \
     --privileged \
     --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it --rm \
     --mount type=bind,source=${DIR}/..,target=${DIR}/.. \
+    --name hyena_safari \
+    ${IMAGE}
+
     # --mount type=bind,source=/home/scratch.svc_compute_arch,target=/home/scratch.svc_compute_arch \
     # --mount type=bind,source=/home/utils,target=/home/utils \
     # --mount type=bind,source=/home/scratch.computelab,target=/home/scratch.computelab \
     # ${EXTRA_MOUNTS} \
-    --name hyena_safari \
-    ${IMAGE}
-
 cd -
