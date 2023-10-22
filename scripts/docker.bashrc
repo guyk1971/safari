@@ -100,7 +100,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-alias jnb='jupyter notebook --ip 0.0.0.0 --no-browser --allow-root'
+alias jnb='jupyter notebook --no-browser'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -116,20 +116,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/guy/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/guy/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/guy/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/guy/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/guy/.mujoco/mujoco200/bin
-export HUGGINGFACE_API_KEY=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
-export OPENAI_API_KEY=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
