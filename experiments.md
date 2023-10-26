@@ -46,9 +46,12 @@ This is a common failure mode of models tested on these synthetics, consider tes
 only flow "backwards in time" i.e. 
 $$\forall j > i: \frac{\partial y_i}{\partial x_j} \approx 0$$
 
+### Associative Recall
 To run the synthetics from the Hyena paper, you can use these commands:
 ```
-python -m train experiment=synthetics/associative_recall/hyena-131k-30vs.yaml 
+python -m train experiment=synthetics/associative_recall/hyena-131k-30vs.yaml
+CUDA_VISIBLE_DEVICES=0 python -m train experiment=nemo_func_val/associative_recall/hyena-32k-60vs.yaml +dataset.dir=datasets/assoc_recall/ 
+
 ```
 You can also customize sequence length and vocabulary sizes directly through the command line (or by creating a custom config).
 We recommend a quick run with vocabulary size 10 and sequence length 256 to verify the pipeline is working correctly
