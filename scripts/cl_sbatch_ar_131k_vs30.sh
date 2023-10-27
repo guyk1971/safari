@@ -8,18 +8,8 @@ set -x
 
 # CONTAINER="nvcr.io/ea-bignlp/ga-participants/nemofw-training:23.08.02"
 CONTAINER="gitlab-master.nvidia.com:5005/gkoren/safari-hyena"
-WANDB="xxx" # replace with your own WandB API key
+WANDB="656d898ceb43e7059b9ab57b2f85bb05d196b907" # replace with your own WandB API key
 
-GLOBAL_BATCH_SIZE=128
-VALID_GLOBAL_BATCH_SIZE=128
-MICRO_BATCH_SIZE=1
-TENSOR_MODEL_PARALLEL_SIZE=1
-PIPELINE_MODEL_PARALLEL_SIZE=1
-VAL_CHECK_INTERVAL=50
-MAX_STEPS=1000
-
-# Model architecture
-MAX_SEQ_LENGTH=2048
 
 # Logging
 PROJECT="Hyena_safari"
@@ -31,7 +21,7 @@ PROJECT_ROOT="/home/scratch.gkoren_gpu/code/github/guyk1971/safari"
 
 RESULTS="${PROJECT_ROOT}/results/${EXPNAME}"
 
-CODE="${PROJECT_ROOT}/code/NeMo"
+CODE="${PROJECT_ROOT}"
 # MODEL="${GPFS}/models"
 #MODEL="/lustre/fsw/swdl/swdl-langspeech/sandeepsub/models"
 mkdir -p ${RESULTS}
@@ -62,11 +52,6 @@ echo "*******STARTING********" \
 && echo "---------------" \
 && export WANDB_API_KEY=${WANDB} \
 && echo "Starting training" \
-&& cd /code/ \
-&& git rev-parse HEAD \
-&& cd nemo/collections/nlp/data/language_modeling/megatron \
-&& make \
-&& export PYTHONPATH="/code/.:${PYTHONPATH}" \
 && python -m train experiment=synthetics/associative_recall/hyena-131k-30vs.yaml
 EOF
 

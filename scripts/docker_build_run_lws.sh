@@ -6,7 +6,6 @@ cd $DIR
 MY_UID=$(id -u)
 MY_GID=$(id -g)
 MY_UNAME=$(id -un)
-BASE_IMAGE=
 mkdir -p ${DIR}/.vscode-server
 LINK=$(realpath --relative-to="/home/${MY_UNAME}" "$DIR" -s)
 IMAGE=hyena_safari_${MY_UNAME}
@@ -59,6 +58,7 @@ docker run \
     --privileged \
     --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it --rm \
     --mount type=bind,source=${DIR}/..,target=${DIR}/.. \
+    -p 8888:8888 \
     --name hyena_safari \
     ${IMAGE}
 
