@@ -9,8 +9,7 @@ cd $DIR
 MY_UID=$(id -u)
 MY_GID=$(id -g)
 MY_UNAME=$(id -un)
-IMAGE="safari-hyena:flash"
-
+IMAGE=hyena_safari_${MY_UNAME}:flash
 # mount the scratch folders : assuming you have a relative soft link to scratch created by  'ln -s ../scratch.gkoren_gpu scratch'
 EXTRA_MOUNTS=""
 if [ -d "/home/${MY_UNAME}/scratch" ]; then
@@ -26,8 +25,9 @@ docker run \
     --privileged \
     --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 -it --rm \
     --mount type=bind,source=${DIR}/..,target=${DIR}/.. \
-    ${EXTRA_MOUNTS} \
     -p 8888:8888 \
     --name hyena_safari \
     ${IMAGE}
+
+# ${EXTRA_MOUNTS} \
 cd -
