@@ -1,0 +1,4 @@
+# @package _global_
+defaults:
+  - /experiment/nemo_func_val/associative_recall/transformer.yaml
+  - /experiment/nemo_func_val/associative_recall/vocab_size_10.yaml

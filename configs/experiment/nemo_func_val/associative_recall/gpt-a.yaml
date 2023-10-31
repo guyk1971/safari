@@ -1,0 +1,19 @@
+# @package _global_
+defaults:
+  - /experiment/nemo_func_val/associative_recall/transformer.yaml
+  - /experiment/nemo_func_val/associative_recall/vocab_size_10.yaml
+
+dataset:
+  vocab_size: 40
+  input_seq_len: 2048
+  num_examples: 4000
+  batch_size: 16
+  allow_dot: True
+  data_dir: /home/gkoren/scratch/code/github/guyk1971/safari/datasets/assoc_recall/
+
+
+trainer:
+  max_epochs: 400
+  accelerator: gpu
+  devices: 1
+  num_nodes: 1
