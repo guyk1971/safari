@@ -15,6 +15,8 @@ from einops import rearrange
 
 from src.utils import instantiate
 import src.utils.registry as registry
+from flashfftconv import FlashFFTConv  #flashfftconv support
+
 
 class LinearResidual(nn.Linear):
     """Wrap nn.Linear to return the residual as well. For compatibility with FusedDense.
@@ -386,12 +388,12 @@ def _init_weights(module, n_layer, initializer_range=0.02, rescale_prenorm_resid
 
 
 class LMBackbone(nn.Module):
-
+    #flashfftconv - added use_flashfftconv=False to init arguments
     def __init__(self, d_model: int, n_layer: int, d_inner: int, vocab_size: int,
                  process_group=None, layer=None,
                  attn_layer_idx=None, attn_cfg=None, max_position_embeddings=0,
                  resid_dropout: float = 0.0, embed_dropout: float = 0.1,
-                 layer_norm_epsilon: float = 1e-5, initializer_cfg=None,residual_in_fp32=False,
+                 layer_norm_epsilon: float = 1e-5, initializer_cfg=None,residual_in_fp32=False,use_flashfftconv=False,
                  device=None, dtype=None, **kwargs) -> None:
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
@@ -409,6 +411,14 @@ class LMBackbone(nn.Module):
             resid_dropout2=resid_dropout, residual_in_fp32=residual_in_fp32,layer_idx=i,
             **factory_kwargs,
         ) for i in range(n_layer)])
+
+        # added support in flashfftconv
+        if use_flashfftconv:
+            self.flashfftconv = FlashFFTConv(layer['l_max'] * 2, dtype=torch.float16)
+
+            for layer in self.layers:
+                layer.mixer.flashfftconv = self.flashfftconv
+        # flashfftconv - end of added support
 
         self.drop_f = nn.Dropout(resid_dropout)
         self.ln_f = nn.LayerNorm(d_model, eps=layer_norm_epsilon, **factory_kwargs)
