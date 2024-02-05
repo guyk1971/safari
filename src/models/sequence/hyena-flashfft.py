@@ -345,7 +345,7 @@ class FlashHyenaOperator(nn.Module):
             # `c` is always 1 by default
             k = rearrange(k, 'c l (v o) -> c o v l', v=self.head_dim, o=self.order - 1)[0]
             
-        y = self.flashfftconv(x1v, k)
+        y = self.flashfftconv(x1v, k.squeeze())
         y = y * x2
 
         y = y.transpose(-1, -2)
