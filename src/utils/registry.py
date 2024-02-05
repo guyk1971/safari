@@ -25,7 +25,7 @@ model = {
     "lm_simple": "src.models.sequence.simple_lm.SimpleLMHeadModel",
     "vit_b_16": "src.models.baselines.vit_all.vit_base_patch16_224",
 }
-
+#flashfftconv - added hyena-flashfft layer
 layer = {
     "id": "src.models.sequence.base.SequenceIdentity",
     "ff": "src.models.sequence.ff.FF",
@@ -36,6 +36,7 @@ layer = {
     "h3": "src.models.sequence.h3.H3",
     "h3-conv": "src.models.sequence.h3_conv.H3Conv",
     "hyena": "src.models.sequence.hyena.HyenaOperator",
+    "hyena-flashfft": "src.models.sequence.hyena-flashfft.FlashHyenaOperator",
     "hyena-filter": "src.models.sequence.hyena.HyenaFilter",
     "vit": "src.models.sequence.mha.VitAttention",
 }

@@ -7,11 +7,11 @@ import torch.nn.functional as F
 from functools import partial
 
 from einops import rearrange, repeat
-# the following 4 lines are commented to support flashfftconv
-# try:
-#     from src.ops.fftconv import fftconv_ref, fftconv_func 
-# except ImportError:
-#     fftconv_func = None
+
+try:
+    from src.ops.fftconv import fftconv_ref, fftconv_func 
+except ImportError:
+    fftconv_func = None
 
 try:
     from flash_attn.ops.fused_dense import FusedDense
@@ -23,30 +23,10 @@ from src.utils.train import OptimModule
 from src.utils.config import instantiate, auto_assign_attrs
 from src.models.nn import Activation
 
+from flashfftconv import FlashDepthWiseConv1d
 
-# reference convolution with residual connection - safari version
-# def fftconv_ref(u, k, D, dropout_mask, gelu=True, k_rev=None):
-#     seqlen = u.shape[-1]
-#     fft_size = 2 * seqlen
-#     k_f = torch.fft.rfft(k, n=fft_size) / fft_size
-#     if k_rev is not None:
-#         k_rev_f = torch.fft.rfft(k_rev, n=fft_size) / fft_size
-#         k_f = k_f + k_rev_f.conj()
-#     u_f = torch.fft.rfft(u.to(dtype=k.dtype), n=fft_size)
-    
-#     if len(u.shape) > 3: k_f = k_f.unsqueeze(1)
 
-#     y = torch.fft.irfft(u_f * k_f, n=fft_size, norm='forward')[..., :seqlen]
-
-#     out = y + u * D.unsqueeze(-1)
-#     if gelu:
-#         out = F.gelu(out)
-#     if dropout_mask is not None:
-#         return (out * rearrange(dropout_mask, 'b H -> b H 1')).to(dtype=u.dtype)
-#     else:
-#         return out.to(dtype=u.dtype)
-
-# reference convolution with residual connection - flashfftconv version
+# reference convolution with residual connection
 def fftconv_ref(u, k, D, dropout_mask, gelu=True, k_rev=None):
     seqlen = u.shape[-1]
     fft_size = 2 * seqlen
@@ -67,7 +47,6 @@ def fftconv_ref(u, k, D, dropout_mask, gelu=True, k_rev=None):
         return (out * rearrange(dropout_mask, 'b H -> b H 1')).to(dtype=u.dtype)
     else:
         return out.to(dtype=u.dtype)
-
 
 
 @torch.jit.script 
@@ -216,22 +195,20 @@ class HyenaFilter(OptimModule):
         k = k[0] if type(k) is tuple else k 
         if bias is None: bias = self.bias
         bias = bias if self.use_bias else 0 * bias
-        # flashfftconv - replacing the next 8 commented lines with the line that follows
-        # if self.fused_fft_conv: 
-        #     bias = bias.to(dtype=torch.float32)
-        #     y = fftconv_func(
-        #         x, k, bias, dropout_mask=None, gelu=False, 
-        #         force_fp16_output=torch.is_autocast_enabled()
-        #     )
-        # else:
-        #     y = fftconv_ref(x, k, bias, dropout_mask=None, gelu=False)
 
-        #flashfftconv - added this line:
-        y = fftconv_ref(x, k, bias, dropout_mask=None, gelu=False)
+        if self.fused_fft_conv: 
+            bias = bias.to(dtype=torch.float32)
+            y = fftconv_func(
+                x, k, bias, dropout_mask=None, gelu=False, 
+                force_fp16_output=torch.is_autocast_enabled()
+            )
+        else:
+            y = fftconv_ref(x, k, bias, dropout_mask=None, gelu=False)
+
         return y
     
     
-class HyenaOperator(nn.Module):
+class FlashHyenaOperator(nn.Module):
     def __init__(
             self,
             d_model,
@@ -251,6 +228,7 @@ class HyenaOperator(nn.Module):
             short_filter_order=3, 
             activation="id",
             return_state=False,
+            inference_mode=False,
             **filter_args,
         ):
         r"""
@@ -284,6 +262,7 @@ class HyenaOperator(nn.Module):
             block_dim=block_dim, head_dim=head_dim, filter_order=filter_order, post_order_ffn=post_order_ffn,
             short_filter_order=short_filter_order, num_blocks = num_blocks, filter_dropout=filter_dropout,
             jit_filter=jit_filter, outer_mixing=outer_mixing, activation=activation, return_state=return_state,
+            inference_mode=inference_mode
         )
         self.activation = Activation(activation)
         self.dropout = nn.Dropout(dropout)
@@ -307,72 +286,70 @@ class HyenaOperator(nn.Module):
         assert self.order >= 2, f'Order must be at least 2, (got {self.order})'
         total_width = self.d_model * self.inner_factor * (self.order + 1)
         
-        self.short_filter = nn.Conv1d(
+        
+        short_filter = nn.Conv1d(
             in_channels=total_width, 
             out_channels=total_width, 
             kernel_size=self.short_filter_order, 
             groups=total_width, 
             padding=self.short_filter_order - 1
         )
+        self.short_filter = FlashDepthWiseConv1d(
+            channels=total_width,
+            kernel_size=self.short_filter_order,
+            padding=1,
+            weights=short_filter.weight,
+            bias=short_filter.bias
+        )
         
-        filter_cls = instantiate(registry.layer, filter_cls, partial=True)
-                    
-        self.filter_fn = filter_cls(
-            self.head_dim * self.inner_factor * (self.order - 1), 
-            order=self.filter_order, 
-            seq_len=self.l_max,
-            channels=1, 
-            dropout=self.filter_dropout, 
-            **filter_args
-        ) 
-        if self.jit_filter: self.filter_fn = torch.jit.script(self.filter_fn, self.L)
+        if self.inference_mode:
+            self.filter = nn.Parameter(torch.randn(self.d_model, self.l_max))
+        else:
+            filter_cls = instantiate(registry.layer, filter_cls, partial=True)
+                        
+            self.filter_fn = filter_cls(
+                self.head_dim * self.inner_factor * (self.order - 1), 
+                order=self.filter_order, 
+                seq_len=self.l_max,
+                channels=1, 
+                dropout=self.filter_dropout, 
+                **filter_args
+            ) 
+            if self.jit_filter: self.filter_fn = torch.jit.script(self.filter_fn, self.L)
 
     def recurrence(self, u , state):
         "Fast inference mode via distilled recurrence"
         raise NotImplementedError("Working on it!")
     
     def forward(self, u, *args, **kwargs):
-        l = u.size(-2)
-        l_filter = min(l, self.l_max)
-        u = self.in_proj(u)
-        u = rearrange(u, 'b l d -> b d l')
-        
-        uc = self.short_filter(u)[...,:l_filter] 
-        
-        uc = rearrange(uc, 'b (ho v) (z l) -> b ho v z l', 
-            z=self.num_blocks, 
-            ho=self.num_heads, 
-            v=self.head_dim * (self.order + 1)
-        )
+        B, L, H = u.shape
+        l_filter = min(L, self.l_max)
 
-        *x, v = uc.split(self.d_model, dim=2)
-        k = self.filter_fn.filter(l_filter)
-        
-        # `c` is always 1 by default
-        k = rearrange(k, 'c l (v o) -> c o v l', v=self.head_dim, o=self.order - 1)[0]
-        
-        bias = rearrange(self.filter_fn.bias, '(v o) -> o v', v=self.head_dim, o=self.order - 1)
+        u = u.transpose(-1, -2)
 
-        for o, x_i in enumerate(reversed(x[1:])):
-            if self.outer_mixing:
-                v = rearrange(v, 'b h v z l -> b h 1 v z l') 
-                v = self.dropout(
-                    v * rearrange(x_i, 'b h v z l -> b h v 1 z l') 
-                )
-                v = v.sum(dim=2)
-            else:
-                v = self.dropout(v * x_i)
+        # in projection, this way pushes the transpose into the matmul
+        # x1x2v = self.in_linear.weight @ u + self.in_linear.bias[None, :, None] # B 3H L
+        x1x2v = self.in_proj.weight @ u # B 3H L
+        
+        x1x2v = self.short_filter(x1x2v)
 
-            # the bias term is broadcasted. Last dimension (l) is handled by fftconv
-            v = self.filter_fn(v, l_filter, k=k[o], bias=bias[o, None, :, None])
+        x1, x2, v = x1x2v.split(self.d_model, dim=1)
+        x1v = x1 * v
+        x1v = x1v.contiguous()
+
+        if self.inference_mode:
+            k = self.filter
+        else:
+            k = self.filter_fn.filter(l_filter)
             
-            if self.post_order_ffn: 
-                w = self.ord_proj_w[o]
-                v = mul_sum(
-                    rearrange(w, 'h1 h2 -> 1 h1 h2 1 1 1'), rearrange(v, 'b h v z l -> b h 1 v z l')
-                )
+            # `c` is always 1 by default
+            k = rearrange(k, 'c l (v o) -> c o v l', v=self.head_dim, o=self.order - 1)[0]
+            
+        y = self.flashfftconv(x1v, k)
+        y = y * x2
 
-        y = self.activation(rearrange(v * x[0], 'b h v z l -> b (z l) (h v)', z=self.num_blocks, h=self.num_heads))
+        y = y.transpose(-1, -2)
+
         y = self.out_proj(y)
         
         if self.return_state:
